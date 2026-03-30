@@ -10,7 +10,7 @@ When working with master-detail relationships, two fundamental view patterns eme
 This creates a four-quadrant approach to UI and API design:
 
 | | Master | Detail |
-|---|---|---|
+| --- | --- | --- |
 | **List** | ListOfMasters | ListOfDetails |
 | **Detail** | DetailOfMaster | DetailOfDetail |
 
@@ -20,11 +20,10 @@ This creates a four-quadrant approach to UI and API design:
 
 This pattern implements the concept of progressive disclosure, where information is presented in increasing levels of detail:
 
-```
 ListOfMasters → DetailOfMaster → ListOfDetails → DetailOfDetail
-```
 
 For example:
+
 - ListOfMasters: All orders in a system
 - DetailOfMaster: One specific order with summary information
 - ListOfDetails: All line items within that order
@@ -204,12 +203,10 @@ This pattern enables targeted performance optimizations:
 
 The pattern aligns perfectly with RESTful API design:
 
-```
 GET /api/orders                    # ListOfMasters
 GET /api/orders/{id}               # DetailOfMaster
 GET /api/orders/{id}/items         # ListOfDetails
 GET /api/orders/{id}/items/{itemId} # DetailOfDetail
-```
 
 ## Frontend Implementation
 
@@ -251,18 +248,21 @@ const OrderDetail = ({ orderId }) => {
 ## Real-World Application Examples
 
 ### E-Commerce
+
 - ListOfMasters: Product catalog grid
 - DetailOfMaster: Product details page
 - ListOfDetails: Product reviews list
 - DetailOfDetail: Expanded review with comments
 
 ### Finance
+
 - ListOfMasters: Account overview
 - DetailOfMaster: Account details
 - ListOfDetails: Transaction history
 - DetailOfDetail: Transaction details with receipts
 
 ### Project Management
+
 - ListOfMasters: Projects dashboard
 - DetailOfMaster: Project overview
 - ListOfDetails: Tasks within project

@@ -11,7 +11,7 @@ It has three phases.
 
 _There might be some hints here._
 
-### Phase 1 (week 4)
+## Phase 1 (week 4)
 
 - build a plan for the project
 - design the database schema by building out data objects
@@ -22,7 +22,7 @@ _There might be some hints here._
   - continue with `curl` and doing a GET of your _detail_ table
   - add the other CRUD operations for both master and detail tables
 
-### Phase 2 (week 4)
+## Phase 2 (week 4)
 
 - add a one to many relationship between your master and detail tables
 - add REST API endpoints for the one to many relationship
@@ -30,7 +30,7 @@ _There might be some hints here._
   - you might use Postman or Insomnia, or even Everest.
 - add a means to dump and load your data to either SQL and/or JSON files
 
-### Phase 3 (week 6)
+## Phase 3 (week 6)
 
 - create a simple Vanilla JavaScript application to interact with your REST API
 - do the same with React
@@ -40,11 +40,10 @@ _There might be some hints here._
 ### Overall ListDetails Stacks
 
 A basic SQL lab: tables, schema, selects, and crud in SQL repl; simple API access
-Java: ListDetail phase 1,2 REST/DB app https://spring.io/guides/gs/accessing-data-rest Spring; Data: ListDetail phase 1,2 REST/DB app (fastapi, flask, sqlite3
-https://zcw.guru/kristofer/ae5cb89250b14a6da2903a9cc613390b
+Java: ListDetail phase 1,2 REST/DB app <https://spring.io/guides/gs/accessing-data-rest> Spring; Data: ListDetail phase 1,2 REST/DB app (fastapi, flask, sqlite3
+<https://zcw.guru/kristofer/ae5cb89250b14a6da2903a9cc613390b>
 
 ## Understanding Master-Detail Relationships in Data Modeling
-
 
 ## What is a Master-Detail Relationship?
 
@@ -66,24 +65,28 @@ Understanding master-detail relationships is crucial for several reasons:
 ## Real-World Examples Across Domains
 
 ### E-Commerce
+
 - **Master**: Order
 - **Detail**: Order Items
 
 An order can contain multiple items, but each order item belongs to exactly one order.
 
 ### Finance
+
 - **Master**: Invoice
 - **Detail**: Line Items
 
 An invoice contains multiple line items, but each line item is associated with exactly one invoice.
 
 ### Healthcare
+
 - **Master**: Patient
 - **Detail**: Medical Records
 
 A patient has multiple medical records, but each record belongs to one patient.
 
 ### Education
+
 - **Master**: Course
 - **Detail**: Lectures/Assignments
 
@@ -175,12 +178,13 @@ class OrderItem(Base):
 A well-designed REST API should reflect the master-detail relationship in its endpoints:
 
 ### Resource Structure
+
 - `/orders` - Get all orders
 - `/orders/{id}` - Get a specific order
 - `/orders/{id}/items` - Get all items for a specific order
 - `/orders/{id}/items/{itemId}` - Get a specific item from a specific order
 
-### Java Example (Spring Boot)
+### Java Example (Spring Boot REST Controller)
 
 ```/dev/null/OrderController.java#L1-22
 @RestController
@@ -258,7 +262,7 @@ As you progress in your Java or Python development journey, mastering this conce
 
 ## But wait...DTO?
 
-What's a DTO? Why? https://zcw.guru/kristofer/dtointro
+What's a DTO? Why? <https://zcw.guru/kristofer/dtointro>
 
 ## Possible project relations
 

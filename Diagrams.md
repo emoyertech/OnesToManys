@@ -1,4 +1,4 @@
-Visualizing REST API with ListOf and DetailView Patterns
+# Visualizing REST API with ListOf and DetailView Patterns
 
 This document uses Mermaid diagrams to illustrate how the ListOf and DetailView architectural patterns work within a REST API service.
 
