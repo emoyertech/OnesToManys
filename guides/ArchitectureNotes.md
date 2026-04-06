@@ -247,12 +247,12 @@ const OrderDetail = ({ orderId }) => {
 
 ## Real-World Application Examples
 
-### E-Commerce
+### Dealership
 
-- ListOfMasters: Product catalog grid
-- DetailOfMaster: Product details page
-- ListOfDetails: Product reviews list
-- DetailOfDetail: Expanded review with comments
+- ListOfMasters: Dealership inventory grid
+- DetailOfMaster: Dealership profile page
+- ListOfDetails: Cars in a dealership
+- DetailOfDetail: One car's details
 
 ### Finance
 

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ dealership.name }} | Dealership Details</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.2">
+</head>
+<body>
+  <main class="page">
+    <header class="hero panel">
+      <div class="hero-copy">
+        <h1>{{ dealership.name }}</h1>
+        <p class="lede">Dealership profile, location, and inventory summary.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button secondary" href="/">Back Home</a>
+        <a class="button" href="/ui#dealership-form">Edit in Workspace</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="stack">
+        <article class="panel">
+          <h2 class="section-title">Dealership information</h2>
+          <div class="metrics">
+            <div class="metric-card"><strong>#{{ dealership.id }}</strong><small>Dealership ID</small></div>
+            <div class="metric-card"><strong>{{ dealership.city or '-' }}</strong><small>City</small></div>
+            <div class="metric-card"><strong>{{ dealership.state or '-' }}</strong><small>State</small></div>
+          </div>
+        </article>
+
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Inventory</h2>
+              <p class="muted">Cars assigned to this dealership.</p>
+            </div>
+          </div>
+          <div class="list">
+            {% if cars %}
+              {% for car in cars %}
+                <article class="item">
+                  <div>
+                    <strong>#{{ car.id }} {{ car.make }} {{ car.model }}</strong>
+                    <div class="item-meta">Year: {{ car.year or '-' }} | Price: {{ car.price or '-' }}</div>
+                    <div class="chip-row">
+                      <span class="chip">VIN {{ car.vin or 'N/A' }}</span>
+                    </div>
+                  </div>
+                </article>
+              {% endfor %}
+            {% else %}
+              <div class="item">
+                <div>
+                  <strong>No cars assigned.</strong>
+                  <div class="item-meta">This dealership currently has no inventory listed.</div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </article>
+      </div>
+
+      <div class="stack">
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Quick actions</h2>
+              <p class="muted">Move into the workspace when you want to edit or delete records.</p>
+            </div>
+          </div>
+          <div class="endpoint-grid">
+            <div class="endpoint">
+              <span><code>Workspace</code> Open the dealership form for edits</span>
+              <a class="button secondary" href="/ui#dealership-form">Edit</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Inventory</code> Jump to the car editor</span>
+              <a class="button secondary" href="/ui#car-form">Cars</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="section-title">At a glance</h2>
+          <p class="compact-note">
+            This page is intentionally read-only. Use the workspace when you need to create, update, or delete dealership and car records.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/ui/theme.js?v=20260403.2"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+PRAGMA foreign_keys = ON;
+
+INSERT INTO dealerships (id, name, city, state) VALUES
+(1, 'Northside Auto Group', 'Wilmington', 'DE'),
+(2, 'Bayview Motors', 'Newark', 'DE'),
+(3, 'Capital City Cars', 'Dover', 'DE'),
+(4, 'Lakeshore Autos', 'Middletown', 'DE'),
+(5, 'Suburban Wheels', 'Wilmington', 'DE'),
+(6, 'Downtown Drive', 'Newark', 'DE'),
+(7, 'Coastal Rides', 'Dover', 'DE'),
+(8, 'Metro Motors', 'Middletown', 'DE'),
+(9, 'Cityline Cars', 'Wilmington', 'DE'),
+(10, 'Highway Auto', 'Newark', 'DE'),
+(11, 'Riverfront Rides', 'Dover', 'DE'),
+(12, 'Suburban Wheels', 'Middletown', 'DE'),
+(13, 'Downtown Drive', 'Wilmington', 'DE'),
+(14, 'Coastal Rides', 'Newark', 'DE'),
+(15, 'Metro Motors', 'Dover', 'DE'),
+(16, 'Cityline Cars', 'Middletown', 'DE'),
+(17, 'Highway Auto', 'Wilmington', 'DE'),
+(18, 'Riverfront Rides', 'Newark', 'DE'),
+(19, 'Suburban Wheels', 'Dover', 'DE'),
+(20, 'Downtown Drive', 'Middletown', 'DE'),
+(21, 'Coastal Rides', 'Wilmington', 'DE'),
+(22, 'Metro Motors', 'Newark', 'DE'),
+(23, 'Cityline Cars', 'Dover', 'DE'),
+(24, 'Highway Auto', 'Middletown', 'DE'),
+(25, 'Riverfront Rides', 'Wilmington', 'DE'),
+(26, 'Suburban Wheels', 'Newark', 'DE'),
+(27, 'Downtown Drive', 'Dover', 'DE'),
+(28, 'Coastal Rides', 'Middletown', 'DE'),
+(29, 'Metro Motors', 'Wilmington', 'DE'),
+(30, 'Cityline Cars', 'Newark', 'DE'),
+(31, 'Highway Auto', 'Dover', 'DE'),
+(32, 'Riverfront Rides', 'Middletown', 'DE');
+
+
+INSERT INTO cars (id, make, model, year, price, vin, dealership_id) VALUES
+(1, 'Toyota', 'Camry', 2021, 23495.00, '4T1G11AK7MU000001', 1),
+(2, 'Honda', 'Civic', 2020, 19995.00, '2HGFC2F69LH000002', 1),
+(3, 'Ford', 'F-150', 2022, 38995.00, '1FTFW1E50NFA00003', 2),
+(4, 'Chevrolet', 'Malibu', 2019, 17495.00, '1G1ZD5ST5KF000004', 2),
+(5, 'Hyundai', 'Elantra', 2021, 20995.00, 'KMHLM4AG8MU000005', 3),
+(6, 'Nissan', 'Altima', 2018, 15995.00, '1N4AL3AP7JC000006', 3),
+(7, 'Kia', 'Sorento', 2022, 31995.00, '5XYRKDLF5NG000007', 4),
+(8, 'Mazda', 'CX-5', 2020, 25995.00, 'JM3KFBCM7L0000008', 4);

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Cars</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.3">
+</head>
+<body>
+  <main class="page">
+    <header class="hero panel">
+      <div class="hero-copy">
+        <h1>All Cars</h1>
+        <p class="lede">Browse every car in the catalog and jump directly to its detail page.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button secondary" href="/">Back Home</a>
+        <a class="button" href="/ui">Open Workspace</a>
+      </div>
+    </header>
+
+    <section class="panel stack">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Directory</h2>
+          <p class="muted">Each car includes a direct View link to the profile page.</p>
+        </div>
+      </div>
+
+      <div class="directory-list">
+        {% if cars %}
+          {% for car in cars %}
+            <div class="directory-item">
+              <div>
+                <strong>#{{ car.id }} {{ car.make }} {{ car.model }}</strong>
+                <small>{{ car.year or '-' }} | {{ car.dealership_name }}</small>
+              </div>
+              <a class="button secondary" href="/cars/{{ car.id }}/view">View</a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="directory-item">
+            <div>
+              <strong>No cars yet.</strong>
+              <small>Add a car in the workspace to populate this page.</small>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/ui/theme.js?v=20260403.3"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+:root {
+  --bg: #f4efe6;
+  --panel: rgba(255, 253, 248, 0.92);
+  --ink: #1f1a17;
+  --muted: #6d655d;
+  --line: #d9cec0;
+  --accent: #0f766e;
+  --accent2: #1d4ed8;
+  --accent-soft: #dceff0;
+  --danger: #b42318;
+  --font: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.16) 0%, transparent 36%),
+    radial-gradient(circle at bottom left, rgba(29, 78, 216, 0.08) 0%, transparent 34%),
+    linear-gradient(135deg, #f8f4ed 0%, var(--bg) 45%, #ede8df 100%);
+}
+
+#root {
+  min-height: 100vh;
+}

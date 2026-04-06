@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Dealerships</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.3">
+</head>
+<body>
+  <main class="page">
+    <header class="hero panel">
+      <div class="hero-copy">
+        <h1>All Dealerships</h1>
+        <p class="lede">Browse every dealership in the catalog with quick access to the detail page for each record.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button secondary" href="/">Back Home</a>
+        <a class="button" href="/ui">Open Workspace</a>
+      </div>
+    </header>
+
+    <section class="panel stack">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Directory</h2>
+          <p class="muted">Each dealership includes a direct View link to the profile page.</p>
+        </div>
+      </div>
+
+      <div class="directory-list">
+        {% if dealerships %}
+          {% for dealership in dealerships %}
+            <div class="directory-item">
+              <div>
+                <strong>#{{ dealership.id }} {{ dealership.name }}</strong>
+                <small>{{ dealership.city or '-' }}, {{ dealership.state or '-' }}</small>
+              </div>
+              <a class="button secondary" href="/dealerships/{{ dealership.id }}/view">View</a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="directory-item">
+            <div>
+              <strong>No dealerships yet.</strong>
+              <small>Load seed data or add a dealership in the workspace.</small>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/ui/theme.js?v=20260403.3"></script>
+</body>
+</html>

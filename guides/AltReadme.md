@@ -7,11 +7,11 @@ Choosing one possible project relations below, you need to create a ListDetails 
 
 This means it will have a REST API middle-end, with a relational database backend.
 
-It has three phases.
+It has three milestones.
 
 _There might be some hints here._
 
-## Phase 1 (week 4)
+## Milestone 1 (week 4)
 
 - build a plan for the project
 - design the database schema by building out data objects
@@ -22,7 +22,7 @@ _There might be some hints here._
   - continue with `curl` and doing a GET of your _detail_ table
   - add the other CRUD operations for both master and detail tables
 
-## Phase 2 (week 4)
+## Milestone 2 (week 4)
 
 - add a one to many relationship between your master and detail tables
 - add REST API endpoints for the one to many relationship
@@ -30,7 +30,7 @@ _There might be some hints here._
   - you might use Postman or Insomnia, or even Everest.
 - add a means to dump and load your data to either SQL and/or JSON files
 
-## Phase 3 (week 6)
+## Milestone 3 (week 6)
 
 - create a simple Vanilla JavaScript application to interact with your REST API
 - do the same with React
@@ -40,7 +40,7 @@ _There might be some hints here._
 ### Overall ListDetails Stacks
 
 A basic SQL lab: tables, schema, selects, and crud in SQL repl; simple API access
-Java: ListDetail phase 1,2 REST/DB app <https://spring.io/guides/gs/accessing-data-rest> Spring; Data: ListDetail phase 1,2 REST/DB app (fastapi, flask, sqlite3
+Java: ListDetail foundation/relationships REST/DB app <https://spring.io/guides/gs/accessing-data-rest> Spring; Data: ListDetail foundation/relationships REST/DB app (fastapi, flask, sqlite3
 <https://zcw.guru/kristofer/ae5cb89250b14a6da2903a9cc613390b>
 
 ## Understanding Master-Detail Relationships in Data Modeling
@@ -277,14 +277,6 @@ instructor.
 - Invoice (master) - Line Items (detail)
 - Product Category (master) - Products (detail)
 - Blog Post (master) - Comments (detail)
-- Playlist (master) - Songs (detail)
-- Movie (master) - Actors (detail)
-- University (master) - Departments (detail)
-- Project (master) - Tasks (detail)
-- Manufacturer (master) - Products (detail)
-- Warehouse (master) - Inventory Items (detail)
-- Email (master) - Attachments (detail)
-- Country (master) - States/Provinces (detail)
-- Hospital (master) - Patients (detail)
-- Album (master) - Photos (detail)
-- Survey (master) - Questions (detail)
+- Dealership (master) - Cars (detail)
+- Dealership (master) - Service Records (detail)
+- Dealership (master) - Sales Leads (detail)

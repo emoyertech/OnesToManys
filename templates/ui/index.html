@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dealership/Cars UI</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.3">
+</head>
+<body>
+  <main class="page">
+    <header class="hero panel">
+      <div class="hero-copy">
+        <h1>Dealership and Cars Studio</h1>
+        <p class="lede">Create, edit, update, delete, inspect relationships, and import your own JSON data from one polished workspace.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button secondary" href="/">Back Home</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="stack">
+        <article class="panel">
+          <h2 class="section-title">What you can do</h2>
+          <div class="metrics">
+            <div class="metric-card"><strong id="dealership-count">0</strong><small>Dealerships</small></div>
+            <div class="metric-card"><strong id="car-count">0</strong><small>Cars</small></div>
+            <div class="metric-card"><strong id="relationship-count">0</strong><small>Cars in view</small></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="section-title">Quick entry points</h2>
+          <div class="endpoint-grid">
+            <div class="endpoint">
+              <span><code>Workspace</code> Jump to the dealership form</span>
+              <a class="button secondary" href="#dealership-form">Edit</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Dealerships</code> Browse the full dealership directory</span>
+              <a class="button secondary" href="/dealerships/directory">View dealerships</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Cars</code> Browse the full car directory</span>
+              <a class="button secondary" href="/cars/directory">View cars</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Inventory</code> Jump to the record lists</span>
+              <a class="button secondary" href="#dealership-list">Delete</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel toolbar">
+          <div>
+            <h2 class="section-title">Data import and export</h2>
+            <p class="muted">Upload a JSON file exported from this app, or download the current dealership data for backup and sharing.</p>
+          </div>
+          <div class="toolbar-actions">
+            <label class="file-pill">
+              <input id="import-file" type="file" accept="application/json,.json">
+              <span>Choose JSON file</span>
+            </label>
+            <button type="button" id="import-button">Upload JSON</button>
+            <button type="button" id="export-button" class="ghost">Download JSON</button>
+          </div>
+        </article>
+
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">GET explorer</h2>
+              <p class="muted">Use these buttons to inspect API responses without leaving the page.</p>
+            </div>
+          </div>
+          <div class="endpoint-controls">
+            <button type="button" id="get-dealerships-btn">GET /dealerships</button>
+            <button type="button" id="get-cars-btn">GET /cars</button>
+            <button type="button" id="get-export-btn" class="ghost">GET /export/json</button>
+          </div>
+          <div class="endpoint-row">
+            <label>Dealership ID<input id="get-dealership-id" type="number" min="1" placeholder="1"></label>
+            <button type="button" id="get-dealership-btn">GET /dealerships/:id</button>
+            <button type="button" id="get-dealership-cars-btn">GET /dealerships/:id/cars</button>
+          </div>
+          <div class="endpoint-row">
+            <label>Car ID<input id="get-car-id" type="number" min="1" placeholder="1"></label>
+            <button type="button" id="get-car-btn">GET /cars/:id</button>
+            <button type="button" id="get-dealership-car-btn">GET /dealerships/:id/cars/:carId</button>
+            <label>Car lookup ID<input id="get-relationship-car-id" type="number" min="1" placeholder="1"></label>
+          </div>
+          <div id="endpoint-result" class="endpoint-result muted">Choose a GET button to inspect data.</div>
+        </article>
+      </div>
+
+      <div class="stack">
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Dealerships</h2>
+              <p class="muted">Master records for the dealership inventory.</p>
+            </div>
+          </div>
+          <form id="dealership-form" class="form" autocomplete="off">
+            <input type="hidden" id="dealership-id">
+            <label>Name<input id="dealership-name" required></label>
+            <div class="two-col">
+              <label>City<input id="dealership-city"></label>
+              <label>State<input id="dealership-state"></label>
+            </div>
+            <div class="actions">
+              <button type="submit">Save Dealership</button>
+              <button type="button" id="dealership-reset" class="ghost">Reset</button>
+            </div>
+          </form>
+          <div id="dealership-list" class="list"></div>
+        </article>
+
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Cars</h2>
+              <p class="muted">Detail records linked to each dealership.</p>
+            </div>
+          </div>
+          <form id="car-form" class="form" autocomplete="off">
+            <input type="hidden" id="car-id">
+            <div class="two-col">
+              <label>Make<input id="car-make" required></label>
+              <label>Model<input id="car-model" required></label>
+            </div>
+            <div class="two-col">
+              <label>Year<input id="car-year" type="number"></label>
+              <label>Price<input id="car-price" type="number" step="0.01"></label>
+            </div>
+            <div class="two-col">
+              <label>VIN<input id="car-vin"></label>
+              <label>Dealership ID<input id="car-dealership-id" type="number" required></label>
+            </div>
+            <div class="actions">
+              <button type="submit">Save Car</button>
+              <button type="button" id="car-reset" class="ghost">Reset</button>
+            </div>
+          </form>
+          <div id="car-list" class="list"></div>
+        </article>
+
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Relationship view</h2>
+              <p class="muted">Load a dealership to see all of its cars.</p>
+            </div>
+          </div>
+          <form id="relationship-form" class="inline-form" autocomplete="off">
+            <label>Dealership ID<input id="relationship-dealership-id" type="number" required></label>
+            <button type="submit">Load Cars</button>
+          </form>
+          <div id="relationship-result" class="relationship-result"></div>
+        </article>
+      </div>
+    </section>
+
+    <p id="status" class="status" aria-live="polite"></p>
+  </main>
+
+  <script src="/static/ui/theme.js?v=20260403.3"></script>
+  <script src="/static/ui/app.js?v=20260403.3"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dealership and Cars</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.3">
+</head>
+<body>
+  <main class="page">
+    <section class="panel hero">
+      <div>
+        <h1>Dealership and Cars</h1>
+        <p class="lede">
+          A polished master-detail dealership application: browse inventory,
+          edit records, inspect relationships, and import or export your own data in JSON.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button" href="/ui">Open Workspace</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="stack">
+        <article class="panel">
+          <h2 class="section-title">What you can do</h2>
+          <div class="metrics">
+            <div class="metric-card"><strong>CRUD</strong><small>Create, update, and delete dealerships and cars</small></div>
+            <div class="metric-card"><strong>Relationships</strong><small>Explore dealership-to-car one-to-many data</small></div>
+            <div class="metric-card"><strong>Upload</strong><small>Import your own dealership JSON file</small></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="section-title">Quick entry points</h2>
+          <div class="endpoint-grid">
+            <div class="endpoint">
+              <span><code>Workspace</code> Edit and manage dealership records</span>
+              <a class="button secondary" href="/ui#dealership-form">Edit</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Dealerships</code> Browse the full dealership directory</span>
+              <a class="button secondary" href="/dealerships/directory">View all</a>
+            </div>
+            <div class="endpoint">
+              <span><code>Cars</code> Browse the full car directory</span>
+              <a class="button secondary" href="/cars/directory">View all</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="stack">
+        <article class="panel">
+          <h2 class="section-title">Featured dealerships (random 5)</h2>
+          <div class="directory-list">
+            {% if dealerships %}
+              {% for dealership in dealerships %}
+                <div class="directory-item">
+                  <div>
+                    <strong>#{{ dealership.id }} {{ dealership.name }}</strong>
+                    <small>{{ dealership.city or '-' }}, {{ dealership.state or '-' }}</small>
+                  </div>
+                  <a class="button secondary" href="/dealerships/{{ dealership.id }}/view">View</a>
+                </div>
+              {% endfor %}
+            {% else %}
+              <div class="directory-item">
+                <div>
+                  <strong>No dealerships yet.</strong>
+                  <small>Load seed data or add a dealership in the workspace.</small>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          {% if total_dealerships and total_dealerships > 5 %}
+            <div class="directory-footer">
+              <a class="button secondary" href="/">Refresh picks</a>
+              <a class="button secondary" href="/dealerships/directory">View all dealerships</a>
+            </div>
+          {% elif dealerships %}
+            <div class="directory-footer">
+              <a class="button secondary" href="/">Refresh picks</a>
+            </div>
+          {% endif %}
+        </article>
+
+        <article class="panel">
+          <h2 class="section-title">Working with uploads</h2>
+          <p class="compact-note">
+            Export the current dealership data from the workspace, then import the JSON back through the
+            upload control to replace the dataset.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="/static/ui/theme.js?v=20260403.3"></script>
+</body>
+</html>

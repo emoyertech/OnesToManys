@@ -1,15 +1,48 @@
-# OnesToManys (ListDetails)
+# OnesToManys (Dealership Database)
 
-The point of this project is to explore what a 3-tier web application is like.
-You can implment it in either Java (and Java frameworks) or Python (and Python frameworks).
+This project is a 3-tier dealership database application.
+It uses a REST API and a relational database to manage dealerships and cars.
 
-Choosing one possible project relations below, you need to create a ListDetails application that allows users to manage their data in a 3-tier architecture.
+## Quick Start
 
-This means it will have a REST API middle-end, with a relational database backend.
+If you are new to this project, read these first in order:
 
-It has three phases.
+1. [guides/PROJECT_GUIDE.md](guides/PROJECT_GUIDE.md): full project overview, architecture, API reference, and completion tracking.
+2. [guides/RUN_PHASE1.md](guides/RUN_PHASE1.md): exact commands to run and validate the app.
+3. [guides/STUDY_GUIDE_API_SETUP.md](guides/STUDY_GUIDE_API_SETUP.md): setup patterns for dealership database projects.
 
-### Phase 1 (days 1-2)
+Run the regression safety checks with:
+
+python -m unittest discover -s tests -v
+
+## Living Project Guide
+
+Project guides are organized under the `guides/` folder.
+
+Use [guides/PROJECT_GUIDE.md](guides/PROJECT_GUIDE.md) as the continuously updated source for:
+
+- a basic walkthrough
+- a technical architecture breakdown for experienced developers
+- decisions, changelog, and next planned changes
+
+Use [guides/STUDY_GUIDE_API_SETUP.md](guides/STUDY_GUIDE_API_SETUP.md) for a thorough reference on setting up similar dealership database API scripts.
+
+## Guide Index
+
+- [guides/PROJECT_GUIDE.md](guides/PROJECT_GUIDE.md): Living project plan, technical architecture, API reference, and verification log.
+- [guides/STUDY_GUIDE_API_SETUP.md](guides/STUDY_GUIDE_API_SETUP.md): Thorough study guide for building similar dealership database apps.
+- [guides/RUN_PHASE1.md](guides/RUN_PHASE1.md): Run instructions for setup and validation.
+- [guides/RELATIONSHIPS_CHECKLIST.md](guides/RELATIONSHIPS_CHECKLIST.md): Tailored next steps and requirements for the dealership/cars relationship work.
+- [guides/endpoint_map.md](guides/endpoint_map.md): Endpoint inventory and quick curl examples.
+- [guides/ArchitectureNotes.md](guides/ArchitectureNotes.md): Master-detail design notes.
+- [guides/Diagrams.md](guides/Diagrams.md): Visual/diagram notes.
+- [guides/misc](guides/misc): Archived or non-essential project artifacts (old backups, temp DB files, Finder metadata).
+
+## Architecture Implementation
+
+- [app.py](app.py): Current API entrypoint for the integrated implementation.
+
+## Foundation
 
 - build a plan for the project
 - design the database schema by building out data objects
@@ -20,7 +53,7 @@ It has three phases.
   - continue with `curl` and doing a GET of your _detail_ table
   - add the other CRUD operations for both master and detail tables
 
-### Phase 2 (days 3-4)
+### Relationships
 
 - add a one to many relationship between your master and detail tables
 - add REST API endpoints for the one to many relationship
@@ -28,21 +61,17 @@ It has three phases.
   - you might use Postman or Insomnia, or even Everest.
 - add a means to dump and load your data to either SQL and/or JSON files
 
-### Phase 3 (days 5-7)
+### User Interface
 
-- create a simple Vanilla JavaScript application to interact with your REST API
-- do the same with React
-- add web pages for CRUD operations for both master and detail tables
-- add web pages for the one to many relationship, designing a UI that shows some dynamic data from the database
+- create a polished one-page interface to interact with your REST API
+- add clean buttons for GET requests and CRUD forms for dealerships and cars
+- show relationship data and support JSON upload/export for dealership data
 
-### Overall ListDetails Stacks
+### Overall Stack Notes
 
-A basic SQL lab: tables, schema, selects, and crud in SQL repl; simple API access
-Java: ListDetail phase 1,2 REST/DB app https://spring.io/guides/gs/accessing-data-rest Spring; Data: ListDetail phase 1,2 REST/DB app (fastapi, flask, sqlite3
-https://zcw.guru/kristofer/ae5cb89250b14a6da2903a9cc613390b
+A basic SQL lab: tables, schema, selects, and CRUD in SQL REPL; simple API access.
 
 ## Understanding Master-Detail Relationships in Data Modeling
-
 
 ## What is a Master-Detail Relationship?
 
@@ -64,24 +93,28 @@ Understanding master-detail relationships is crucial for several reasons:
 ## Real-World Examples Across Domains
 
 ### E-Commerce
-- **Master**: Order
-- **Detail**: Order Items
 
-An order can contain multiple items, but each order item belongs to exactly one order.
+- **Master**: Dealership
+- **Detail**: Car
+
+One dealership can contain many cars, but each car belongs to exactly one dealership.
 
 ### Finance
+
 - **Master**: Invoice
 - **Detail**: Line Items
 
 An invoice contains multiple line items, but each line item is associated with exactly one invoice.
 
 ### Healthcare
+
 - **Master**: Patient
 - **Detail**: Medical Records
 
 A patient has multiple medical records, but each record belongs to one patient.
 
 ### Education
+
 - **Master**: Course
 - **Detail**: Lectures/Assignments
 
@@ -108,7 +141,7 @@ CREATE TABLE order_items (
 
 ## Implementing in Java and Python
 
-### Java Example (Spring Boot)
+### Java Example (Spring Boot) - REST API
 
 ```/dev/null/Order.java#L1-15
 @Entity
@@ -173,6 +206,7 @@ class OrderItem(Base):
 A well-designed REST API should reflect the master-detail relationship in its endpoints:
 
 ### Resource Structure
+
 - `/orders` - Get all orders
 - `/orders/{id}` - Get a specific order
 - `/orders/{id}/items` - Get all items for a specific order
@@ -256,7 +290,7 @@ As you progress in your Java or Python development journey, mastering this conce
 
 ## But wait...DTO?
 
-What's a DTO? Why? https://zcw.guru/kristofer/dtointro
+What's a DTO? Why? <https://zcw.guru/kristofer/dtointro>
 
 ## Possible project relations
 
@@ -264,21 +298,6 @@ These are some possible projrct relations for your ListDetail app.
 You can also propose your own project relations, but it must be approved by an
 instructor.
 
-- Customer (master) - Orders (detail)
-- Department (master) - Employees (detail)
-- Course (master) - Students (detail)
-- Author (master) - Books (detail)
-- Invoice (master) - Line Items (detail)
-- Product Category (master) - Products (detail)
-- Blog Post (master) - Comments (detail)
-- Playlist (master) - Songs (detail)
-- Movie (master) - Actors (detail)
-- University (master) - Departments (detail)
-- Project (master) - Tasks (detail)
-- Manufacturer (master) - Products (detail)
-- Warehouse (master) - Inventory Items (detail)
-- Email (master) - Attachments (detail)
-- Country (master) - States/Provinces (detail)
-- Hospital (master) - Patients (detail)
-- Album (master) - Photos (detail)
-- Survey (master) - Questions (detail)
+- Dealership (master) - Cars (detail)
+- Dealership (master) - Service Records (detail)
+- Dealership (master) - Sales Leads (detail)

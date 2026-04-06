@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ car.make }} {{ car.model }} | Car Details</title>
+  <link rel="stylesheet" href="/static/ui/styles.css?v=20260403.2">
+</head>
+<body>
+  <main class="page">
+    <header class="hero panel">
+      <div class="hero-copy">
+        <h1>{{ car.make }} {{ car.model }}</h1>
+        <p class="lede">Car profile and dealership assignment.</p>
+      </div>
+      <div class="hero-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle">Dark mode</button>
+        <a class="button secondary" href="/">Back Home</a>
+        <a class="button" href="/ui#car-form">Edit in Workspace</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="stack">
+        <article class="panel">
+          <h2 class="section-title">Car information</h2>
+          <div class="metrics">
+            <div class="metric-card"><strong>#{{ car.id }}</strong><small>Car ID</small></div>
+            <div class="metric-card"><strong>{{ car.year or '-' }}</strong><small>Year</small></div>
+            <div class="metric-card"><strong>${{ '%.2f'|format(car.price or 0) if car.price is not none else '-' }}</strong><small>Price</small></div>
+          </div>
+        </article>
+
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Details</h2>
+              <p class="muted">Core vehicle and inventory data.</p>
+            </div>
+          </div>
+          <div class="list">
+            <div class="item">
+              <div>
+                <strong>{{ car.make }} {{ car.model }}</strong>
+                <div class="item-meta">VIN: {{ car.vin or 'N/A' }}</div>
+                <div class="chip-row">
+                  <span class="chip">Dealership #{{ car.dealership_id }}</span>
+                  <span class="chip">{{ car.dealership_name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="stack">
+        <article class="panel stack">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Dealership</h2>
+              <p class="muted">Where this car is listed.</p>
+            </div>
+          </div>
+          <div class="directory-list">
+            <div class="directory-item">
+              <div>
+                <strong>#{{ car.dealership_id }} {{ car.dealership_name }}</strong>
+                <small>{{ car.dealership_city or '-' }}, {{ car.dealership_state or '-' }}</small>
+              </div>
+              <a class="button secondary" href="/dealerships/{{ car.dealership_id }}/view">View dealership</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="section-title">At a glance</h2>
+          <p class="compact-note">
+            This page is read-only. Use the workspace when you want to edit or delete the car record.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/ui/theme.js?v=20260403.2"></script>
+</body>
+</html>
